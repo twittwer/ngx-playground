@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicTitleModule should merge provided config with the default config 1`] = `
+Object {
+  "baseTitle": "Spec",
+  "titleFormatter": [Function],
+}
+`;
+
+exports[`DynamicTitleModule should override default with provided config 1`] = `
+Object {
+  "baseTitle": "Spec",
+  "titleFormatter": [Function],
+}
+`;

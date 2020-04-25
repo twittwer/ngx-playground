@@ -1,6 +1,34 @@
 {
   "version": 1,
   "projects": {
+    "dynamic-title": {
+      "projectType": "library",
+      "root": "libs/dynamic-title",
+      "sourceRoot": "libs/dynamic-title/src",
+      "prefix": "dt",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dynamic-title/tsconfig.lib.json",
+              "libs/dynamic-title/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/dynamic-title/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dynamic-title/jest.config.js",
+            "tsConfig": "libs/dynamic-title/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/dynamic-title/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    }
   },
   "cli": {
     "defaultCollection": "@nrwl/angular",

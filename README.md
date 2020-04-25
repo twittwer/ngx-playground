@@ -6,5 +6,5 @@
 
 | Status | Project                               | Description                                                                     |
 | :----: | ------------------------------------- | ------------------------------------------------------------------------------- |
-|   🗓️   | Dynamic Title                         | Define static/dynamic page titles via router configuration (using NgRx Effects) |
+|   ✅   | [Dynamic Title](./libs/dynamic-title) | Define static/dynamic page titles via router configuration (using NgRx Effects) |
 |   🗓️   | Slot/Teleport Services/Directives     | ...                                                                             |
