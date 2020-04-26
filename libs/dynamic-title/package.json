@@ -1,0 +1,12 @@
+{
+  "name": "@twittwer/dynamic-title",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": ">= 8.0.0",
+    "@angular/router": ">= 8.0.0",
+    "@angular/platform-browser": ">= 8.0.0",
+    "@ngrx/store": ">= 9.0.0",
+    "@ngrx/effects": ">= 9.0.0",
+    "rxjs": ">= 6.0.0"
+  }
+}

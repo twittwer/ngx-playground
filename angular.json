@@ -7,6 +7,18 @@
       "sourceRoot": "libs/dynamic-title/src",
       "prefix": "dt",
       "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/dynamic-title/tsconfig.lib.json",
+            "project": "libs/dynamic-title/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/dynamic-title/tsconfig.lib.prod.json"
+            }
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
