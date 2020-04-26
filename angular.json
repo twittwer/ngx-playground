@@ -28,6 +28,131 @@
         }
       },
       "schematics": {}
+    },
+    "dynamic-title-playground": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/dynamic-title-playground",
+      "sourceRoot": "apps/dynamic-title-playground/src",
+      "prefix": "dt-pg",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dynamic-title-playground",
+            "index": "apps/dynamic-title-playground/src/index.html",
+            "main": "apps/dynamic-title-playground/src/main.ts",
+            "polyfills": "apps/dynamic-title-playground/src/polyfills.ts",
+            "tsConfig": "apps/dynamic-title-playground/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/dynamic-title-playground/src/favicon.ico",
+              "apps/dynamic-title-playground/src/assets"
+            ],
+            "styles": ["apps/dynamic-title-playground/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dynamic-title-playground/src/environments/environment.ts",
+                  "with": "apps/dynamic-title-playground/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dynamic-title-playground:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dynamic-title-playground:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dynamic-title-playground:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/dynamic-title-playground/tsconfig.app.json",
+              "apps/dynamic-title-playground/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dynamic-title-playground/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/dynamic-title-playground/jest.config.js",
+            "tsConfig": "apps/dynamic-title-playground/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/dynamic-title-playground/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "dynamic-title-playground-e2e": {
+      "root": "apps/dynamic-title-playground-e2e",
+      "sourceRoot": "apps/dynamic-title-playground-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dynamic-title-playground-e2e/cypress.json",
+            "tsConfig": "apps/dynamic-title-playground-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dynamic-title-playground:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dynamic-title-playground:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/dynamic-title-playground-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/dynamic-title-playground-e2e/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

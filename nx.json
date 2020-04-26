@@ -21,6 +21,13 @@
   "projects": {
     "dynamic-title": {
       "tags": []
+    },
+    "dynamic-title-playground": {
+      "tags": []
+    },
+    "dynamic-title-playground-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dynamic-title-playground"]
     }
   }
 }
