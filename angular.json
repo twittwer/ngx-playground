@@ -1,8 +1,34 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace",
+    "defaultCollection": "@nrwl/angular",
     "analytics": false
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "prefix": "ngx",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "style": "scss"
+    },
+    "@nrwl/workspace:library": {
+      "prefix": "ngx",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "prefix": "ngx",
+      "unitTestRunner": "jest",
+      "style": "scss"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
+    },
+    "@schematics/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
+    }
   }
 }
