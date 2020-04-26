@@ -1,5 +1,5 @@
 {
-  "npmScope": "nx-playground",
+  "npmScope": "twittwer",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
