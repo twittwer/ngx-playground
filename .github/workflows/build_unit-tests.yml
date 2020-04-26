@@ -1,0 +1,46 @@
+name: Build & Unit Tests
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Cache NPM cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-cache-
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Build (affected)
+        run: npm run affected:build
+
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Cache NPM cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-cache-
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Unit Tests (affected)
+        run: npm run affected:test
+        env:
+          CI: true
