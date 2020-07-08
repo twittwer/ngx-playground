@@ -25,5 +25,16 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "reactive-title": {
+      "tags": []
+    },
+    "reactive-title-demo": {
+      "tags": []
+    },
+    "reactive-title-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["reactive-title-demo"]
+    }
+  }
 }

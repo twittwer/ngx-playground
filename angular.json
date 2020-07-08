@@ -1,6 +1,167 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "reactive-title": {
+      "projectType": "library",
+      "root": "packages/reactive-title",
+      "sourceRoot": "packages/reactive-title/src",
+      "prefix": "rt",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "packages/reactive-title/tsconfig.lib.json",
+            "project": "packages/reactive-title/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/reactive-title/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/reactive-title/tsconfig.lib.json",
+              "packages/reactive-title/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!packages/reactive-title/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/reactive-title/jest.config.js",
+            "tsConfig": "packages/reactive-title/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "packages/reactive-title/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "reactive-title-demo": {
+      "projectType": "application",
+      "root": "demos/reactive-title-demo",
+      "sourceRoot": "demos/reactive-title-demo/src",
+      "prefix": "rtd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/demos/reactive-title-demo",
+            "index": "demos/reactive-title-demo/src/index.html",
+            "main": "demos/reactive-title-demo/src/main.ts",
+            "polyfills": "demos/reactive-title-demo/src/polyfills.ts",
+            "tsConfig": "demos/reactive-title-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "demos/reactive-title-demo/src/favicon.ico",
+              "demos/reactive-title-demo/src/assets"
+            ],
+            "styles": ["demos/reactive-title-demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "demos/reactive-title-demo/src/environments/environment.ts",
+                  "with": "demos/reactive-title-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "reactive-title-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "reactive-title-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "reactive-title-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "demos/reactive-title-demo/tsconfig.app.json",
+              "demos/reactive-title-demo/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!demos/reactive-title-demo/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "demos/reactive-title-demo/jest.config.js",
+            "tsConfig": "demos/reactive-title-demo/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "demos/reactive-title-demo/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "reactive-title-demo-e2e": {
+      "root": "demos/reactive-title-demo-e2e",
+      "sourceRoot": "demos/reactive-title-demo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "demos/reactive-title-demo-e2e/cypress.json",
+            "tsConfig": "demos/reactive-title-demo-e2e/tsconfig.e2e.json",
+            "devServerTarget": "reactive-title-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "reactive-title-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["demos/reactive-title-demo-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!demos/reactive-title-demo-e2e/**/*"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular",
     "analytics": "a8c18c03-aa71-47c3-a561-49f0c8f80666"
@@ -12,6 +173,10 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
-  }
+  },
+  "defaultProject": "reactive-title-demo"
 }

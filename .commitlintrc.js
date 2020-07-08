@@ -26,6 +26,7 @@ module.exports = {
       'always',
       // prettier-ignore
       [
+        'reactive-title',
       ],
     ],
   },
