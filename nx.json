@@ -1,7 +1,11 @@
 {
   "npmScope": "ngx-tools",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
+  },
+  "workspaceLayout": {
+    "appsDir": "demos",
+    "libsDir": "packages"
   },
   "implicitDependencies": {
     "angular.json": "*",
