@@ -1,10 +1,20 @@
 {
   "name": "ngx-tools",
+  "description": "Workspace for Angular Libraries.",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twittwer/ngx-tools.git"
+  },
+  "private": false,
   "license": "MIT",
+  "author": {
+    "name": "Tobias Wittwer",
+    "email": "t.wittwer95@gmail.com"
+  },
   "scripts": {
-    "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
+    "ng": "nx",
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
@@ -27,7 +37,6 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help"
   },
-  "private": true,
   "dependencies": {},
   "devDependencies": {
     "@angular/cli": "9.1.0",
