@@ -1,5 +1,5 @@
-import { join, resolve } from 'path';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { join, resolve } from 'path';
 
 interface PackageJson {
   name: string;
